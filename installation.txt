@@ -1,0 +1,10 @@
+ng new angularApp
+npm install express
+npm install body-parser
+npm install method-override
+npm install mongoose
+npm install express-restify-mongoose
+npm install mongoose-sanitize-json
+
+Run:
+"ng build && node server.js"

@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row mb-4">
+    <hr />
+    <br />
+    <!-- Add new post section -->
+    <div class="col-md-12 card card-block" *ngIf="editPost_id !== post._id">
+      <button class="card-link btn btn-sm btn-info" (click)="sEdit('NEW')" *ngIf="editPost_id !== 'NEW'">Add
+        Post</button>
+
+      <form [formGroup]="postForm" *ngIf="editPost_id === 'NEW'">
+        <h4 class="card-header post-title">
+          <textarea formControlName="titleCtr" placeholder="Title" class="form-label"
+            [(ngModel)]="post.title"></textarea>
+        </h4>
+        <p class="card-body post-text">
+          <textarea rows="5" formControlName="contentCtr" placeholder="Content" class="form-label"
+            [(ngModel)]="post.content"></textarea>
+        </p>
+        <button class="card-link btn btn-sm btn-primary" (click)="create()">Submit</button>
+        <button class="card-link btn btn-sm btn-secondary" (click)="cancel()">Cancel</button>
+      </form>
+    </div>
+    <!-- End of add section-->
+    <hr />
+  </div>
+
+  <div class="row mb-4" *ngFor="let post of articles">
+    <!-- View section -->
+    <div class="card card-block" *ngIf="editPost_id !== post._id">
+      <div class="row">
+        <div class="col-md-2 text-center mt-5">
+          <img src="assets/img/{{post.author}}.jpg" class="picture-profile" alt="profile-picture">
+          <div class="author-info">
+            <strong>{{ post.author}}</strong><br />
+            <span>{{ post.createdAt | date:'MMM dd,yyyy HH:mm' }}</span><br/>
+            <span>Updated: {{ post.updatedAt | date:'MMM dd,yyyy HH:mm' }}</span>
+            <div class="badges">
+              <i class="fa fa-star text-warning" *ngFor=" let r of post.rating"></i>
+            </div>
+            <div class="mt-5">
+                <button class="card-link btn btn-sm btn-primary" (click)="sEdit(post._id)">Edit</button>
+                <button class="card-link btn btn-sm btn-danger" (click)="sDelete(post._id)">Delete</button>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <h4 class="card-header post-title">{{ post.title }}</h4>
+          <p class="card-body post-text">{{post.content}}</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of view section -->
+
+    <!-- Edit section-->
+    <div class="col-md-12  card card-block alert-warning" *ngIf="editPost_id === post._id && mode == 'edit'">
+      <form [formGroup]="postForm">
+        <h4 class="card-header post-title">
+          <textarea formControlName="titleCtr" placeholder="Title" class="form-label"
+            [(ngModel)]="post.title"></textarea>
+        </h4>
+        <p class="card-body post-text">
+          <textarea rows="5" formControlName="contentCtr" class="form-label" [(ngModel)]="post.content"></textarea>
+        </p>
+        <button class="card-link btn btn-sm btn-primary" (click)="update(post._id)">Save</button>
+        <button class="card-link btn btn-sm btn-secondary" (click)="cancel()">Discard</button>
+      </form>
+    </div>
+    <!-- End of edit section-->
+
+    <!-- Delete section -->
+    <div class="col-md-12  card card-block alert-danger" *ngIf="editPost_id === post._id && mode == 'delete'">
+      <h4 class="card-header post-title">
+        Are you sure, you want to delete this post?
+      </h4>
+      <p class="card-body post-text">
+        {{post.title}}
+      </p>
+      <button class="card-link btn btn-sm btn-warning" (click)="delete(post._id)">Confirm</button>
+      <button class="card-link btn btn-sm btn-secondary" (click)="cancel()">Cancel</button>
+    </div>
+    <!-- End of delete section-->
+  </div>
+
+</div>

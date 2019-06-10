@@ -1,0 +1,45 @@
+textarea {
+    width: 100%;
+    border: 0;
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+   // min-height: 360px;
+}
+
+.post-title {
+    text-align: left;
+    background-color: transparent;
+}
+
+.post-text {
+    text-align: left;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.card {
+    display: inline;
+    padding: 0.9rem;
+}
+
+.badges {
+    font-size: 12px;
+}
+
+.author-info {
+    font-size: 12px;
+}
+
+.picture-profile {
+    width: 60px;
+    border-radius: 50%;
+  }
