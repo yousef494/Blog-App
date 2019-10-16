@@ -33,6 +33,7 @@
     "mongoose-sanitize-json": "^2.0.0",
     "ng-sidebar": "^8.0.0",
     "ngx-wow": "^2.0.1",
+    "nodemon": "^1.19.4",
     "python-shell": "^1.0.7",
     "rxjs": "~6.3.3",
     "set-value": "^3.0.1",
