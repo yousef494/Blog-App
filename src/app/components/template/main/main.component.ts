@@ -9,11 +9,19 @@ import { AuthService } from './../../../services/auth.service';
 export class TemplateComponent implements OnInit {
 
   user: any;
+  isMenuClosed: boolean;
 
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
     this.user = this.auth.getUser();
+  }
+
+  /**
+   * Call resize service after side panel mode changes
+   */
+  onSideNavModeChange() {
+    this.isMenuClosed = !this.isMenuClosed;
   }
 
 }

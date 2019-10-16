@@ -1,7 +1,7 @@
 import {
   Component,
-  HostListener,
-  OnInit
+  OnInit,
+  Input
 } from '@angular/core';
 import { ResizeService } from './../../../services/resize.service';
 import { routerTransition } from './../../../services/page.animation';
@@ -20,23 +20,37 @@ export class SidebarComponent implements OnInit {
 
 
   menue = [];
-  isMenuClosed = this.isSmallWidth();
+  @Input() isMenuClosed;
   user: any;
 
   ngOnInit() {
     this.menue = [
       {
-        title: 'Blog',
-        url: '/',
-        iconClass: 'material-icons',
-        iconCode: 'dashboard'
+        title: 'Home',
+        url: '/portofolio/',
+        icon: 'fa-home',
+        lastItemInSection: true
       },
       {
-        title: 'Teams',
-        iconClass: 'material-icons',
-        iconCode: 'group',
-        url: '/team'
-      }];
+        title: 'Blog',
+        url: '/',
+        icon: 'fa-comment'
+      },
+      {
+        title: 'Algorithms',
+        url: '/algs/',
+        icon: 'fa-laptop-code',
+        lastItemInSection: true
+      },
+      {
+        title: 'Chat',
+        url: '/bot/',
+        icon: 'fa-comments',
+        lastItemInSection: true
+      }
+    ];
+    
+    this.isMenuClosed =  this.isSmallWidth();
   }
 
 

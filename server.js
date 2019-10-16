@@ -1,6 +1,10 @@
 /**
  * This file establishes the app.
  * Register endpoints.
+ * 
+ * 
+ * Run:
+ * npm run build
  */
 const express = require('express');
 const path = require('path');
@@ -26,14 +30,16 @@ mongoose.connect('mongodb://localhost:27017/blogdb', {
 
     //register endpoints
     endpoints.post(app);
+    endpoints.algorithm(app);
     endpoints.default(app, config.urlPrefix);
-    //endpoints.blog(app, config.blogPrefix);
+
+    endpoints.bot(app);
 
     app.get('*', (req, res) => {
         res.sendFile(__dirname+'/dist/blog/index.html');
     });
 
-    app.listen(config.server.port, function () {
+    app.listen(config.server.port, config.server.host,function () {
         console.log(config.server.name, 'server is listening on port', config.server.port);
     });
     

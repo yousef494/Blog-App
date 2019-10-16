@@ -77595,6 +77595,189 @@ var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Version"]('7.2.15'
 
 /***/ }),
 
+/***/ "./node_modules/ngx-wow/esm5/ngx-wow.es5.js":
+/*!**************************************************!*\
+  !*** ./node_modules/ngx-wow/esm5/ngx-wow.es5.js ***!
+  \**************************************************/
+/*! exports provided: NgwWowModule, NgwWowConfig, WindowService, NgwWowService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgwWowModule", function() { return NgwWowModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgwWowConfig", function() { return NgwWowConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WindowService", function() { return WindowService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgwWowService", function() { return NgwWowService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Main module of the library
+ */
+var NgwWowModule = /** @class */ (function () {
+    function NgwWowModule() {
+    }
+    NgwWowModule.decorators = [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
+                    imports: [
+                        _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]
+                    ]
+                },] },
+    ];
+    return NgwWowModule;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Configuration for the NgwWowService service.
+ */
+var  /**
+ * Configuration for the NgwWowService service.
+ */
+NgwWowConfig = /** @class */ (function () {
+    function NgwWowConfig() {
+        /**
+         * Class name that reveals the hidden box when user scrolls.
+         */
+        this.boxClass = 'wow';
+        /**
+         * Class name that triggers the CSS animations ('animated' by default for the animate.css library)
+         */
+        this.animateClass = 'animated';
+        /**
+         * Define the distance between the bottom of browser viewport and the top of hidden box.
+         * When the user scrolls and reach this distance the hidden box is revealed.
+         */
+        this.offset = 0;
+        /**
+         * Turn on/off WOW.js on mobile devices.
+         */
+        this.mobile = true;
+        /**
+         * Consatantly check for new WOW elements on the page.
+         */
+        this.live = true;
+    }
+    return NgwWowConfig;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Service to interact with the window object.
+ */
+var WindowService = /** @class */ (function () {
+    function WindowService() {
+    }
+    Object.defineProperty(WindowService.prototype, "nativeWindow", {
+        get: /**
+         * @return {?}
+         */
+        function () {
+            return _window();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    WindowService.decorators = [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{
+                    providedIn: 'root',
+                },] },
+    ];
+    /** @nocollapse */ WindowService.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["defineInjectable"])({ factory: function WindowService_Factory() { return new WindowService(); }, token: WindowService, providedIn: "root" });
+    return WindowService;
+}());
+/**
+ * @return {?}
+ */
+function _window() {
+    // Return the global native browser window object
+    return typeof window !== 'undefined' ? window : undefined;
+}
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+var NgwWowService = /** @class */ (function () {
+    function NgwWowService(windowService) {
+        // Observable  source
+        this.itemRevealedSource = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        // Observable  stream
+        this.itemRevealed$ = this.itemRevealedSource.asObservable();
+        this.window = windowService.nativeWindow;
+    }
+    /**
+     * @param {?=} config
+     * @return {?}
+     */
+    NgwWowService.prototype.init = /**
+     * @param {?=} config
+     * @return {?}
+     */
+    function (config) {
+        var _this = this;
+        if (this.window) {
+            // For Angular Universal suport
+            var /** @type {?} */ wowConfig = config || {};
+            // Set callback hook:
+            wowConfig.callback = function () { return _this.itemRevealedSource.next(); };
+            // Initializes the library
+            new WOW(wowConfig).init();
+        }
+    };
+    NgwWowService.decorators = [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{
+                    providedIn: 'root',
+                },] },
+    ];
+    /** @nocollapse */
+    NgwWowService.ctorParameters = function () { return [
+        { type: WindowService, },
+    ]; };
+    /** @nocollapse */ NgwWowService.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["defineInjectable"])({ factory: function NgwWowService_Factory() { return new NgwWowService(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["inject"])(WindowService)); }, token: NgwWowService, providedIn: "root" });
+    return NgwWowService;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+
+//# sourceMappingURL=ngx-wow.es5.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/rxjs/_esm5/index.js":
 /*!******************************************!*\
   !*** ./node_modules/rxjs/_esm5/index.js ***!

@@ -1,4 +1,5 @@
 module.exports = {
     post : require('./post'),
-    article : require('./article')
+    algorithm : require('./algorithm'),
+    bot : require('./bot')
 }
